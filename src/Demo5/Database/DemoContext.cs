@@ -8,6 +8,7 @@ namespace Database
     {
         public DbSet<User> User { get; set; }
         public DbSet<Rol> Rol { get; set; }
+        public DbSet<Client> Client { get; set; }
 
         protected string ConnectionString { get; set; }
 
@@ -32,7 +33,8 @@ namespace Database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration())
-                        .ApplyConfiguration(new RolConfiguration());
+                        .ApplyConfiguration(new RolConfiguration())
+                        .ApplyConfiguration(new ClientConfiguration());
         }
     }
 }

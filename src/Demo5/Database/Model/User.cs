@@ -20,6 +20,12 @@ namespace Database.Model
 
         #endregion
 
+        #region Relations
+
         public Rol RolNavigation { get; set; }
+
+        public Client ClientNavigation { get; set; }
+
+        #endregion
     }
 }
