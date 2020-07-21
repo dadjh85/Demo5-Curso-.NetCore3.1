@@ -12,6 +12,8 @@ namespace Database.Configuration
                    .WithMany(e => e.Users)
                    .HasForeignKey(e => e.IdRol);
 
+            //builder.Property(e => e.IsActive).HasDefaultValue(true);
+
             builder.HasQueryFilter(e => e.IsActive);
         }
     }

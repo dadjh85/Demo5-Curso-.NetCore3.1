@@ -9,6 +9,9 @@ namespace Database
         public DbSet<User> User { get; set; }
         public DbSet<Rol> Rol { get; set; }
         public DbSet<Client> Client { get; set; }
+        public DbSet<Book> Book { get; set; }
+        public DbSet<Category> Category { get; set; }
+        public DbSet<BookCategory> BookCategory { get; set; }
 
         protected string ConnectionString { get; set; }
 
@@ -34,7 +37,10 @@ namespace Database
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration())
                         .ApplyConfiguration(new RolConfiguration())
-                        .ApplyConfiguration(new ClientConfiguration());
+                        .ApplyConfiguration(new ClientConfiguration())
+                        .ApplyConfiguration(new BookConfiguration())
+                        .ApplyConfiguration(new CategoryConfiguration())
+                        .ApplyConfiguration(new BookCategoryConfiguration());
         }
     }
 }
