@@ -1,0 +1,3 @@
+﻿Scaffold-DbContext "Server=localhost\SQLEXPRESS;Database=EFCore-Demo5;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+para que el comando sea solo de algunas tablas: Scaffold-DbContext ... -Tables Artist, Album
