@@ -13,6 +13,7 @@ namespace Database.Model
         public string Email { get; set; }
         [MaxLength(200), Required]
         public string Password { get; set; }
+        public bool IsActive { get; set; }
 
         #region Relations Properties
 

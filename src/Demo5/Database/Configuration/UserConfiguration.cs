@@ -11,6 +11,8 @@ namespace Database.Configuration
             builder.HasOne(e => e.RolNavigation)
                    .WithMany(e => e.Users)
                    .HasForeignKey(e => e.IdRol);
+
+            builder.HasQueryFilter(e => e.IsActive);
         }
     }
 }

@@ -1,19 +1,18 @@
-##  Demo 4 - Curso .NET Core 3.1  ##
+##  Demo 5 - Curso .NET Core 3.1  ##
 
-* Controllers en un API-REST .NET Core
-	* Rutas en .NET Core
-	* Atributo ApiController
-	* Objeto IActionResult
-	* Convenciones en .NET Core
-* Programación asíncrona
-* Seguridad en .NET Core
-	* Tokens JWT
-	* CORS 
-* Integración de Swagger en un API-REST .NET Core
-* .NET Core Multiidoma
+* EntityFramework Core
+	* Conceptos Básicos
+	* Modelado de EntityFramework Core
+	* Code First
+	* Database First con Scaffolding (Ingeniería inversa)
+	* Configuración de Scrutor
+	* Configuración de automapper 
+	* Querys EF Core
+* CRUD con patrón Repository
 
 
 
-Más información en: [Demo4-Curso-.NetCore.pptx](https://github.com/dadjh85/Demo4-Curso-.NetCore3.1/raw/master/doc/Demo4-%20Curso%20.NET%20Core.pptx)
+
+Más información en: [Demo5-Curso-.NetCore.pptx](https://github.com/dadjh85/Demo5-Curso-.NetCore3.1/raw/master/doc/Demo5-%20Curso%20.NET%20Core.pptx)
 
 
