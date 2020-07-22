@@ -24,8 +24,6 @@ namespace Demo5.Controllers
         public async Task<IActionResult> GetList()
         {
             List<DtoUserGet> result = await _userService.GetList();
-            if (result == null)
-                return NotFound();
 
             return Ok(result);
         }

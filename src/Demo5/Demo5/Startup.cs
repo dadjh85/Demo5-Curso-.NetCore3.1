@@ -28,7 +28,7 @@ namespace Demo5
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContextPool<DemoContext>(c => c.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.AddDbContext<DemoContext>(c => c.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddAutoMapper(typeof(UserMapperConfig).GetTypeInfo().Assembly);
             services.AddScrutor();
             services.AddControllers();

@@ -1,6 +1,7 @@
 ﻿using Database;
 using Database.Model;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,9 +15,9 @@ namespace Repository.UserRepository
 
         #endregion
 
-        public UserRepository(DemoContext demoContext)
+        public UserRepository(DemoContext context)
         {
-            _context = demoContext;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         #region Implementation IUserRepository
