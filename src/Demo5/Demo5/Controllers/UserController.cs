@@ -39,7 +39,7 @@ namespace Demo5.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(DtoUserAdd item)
+        public async Task<IActionResult> Add([FromBody] DtoUserAdd item)
         {
             var id = await _userService.Add(item);
 
@@ -47,7 +47,7 @@ namespace Demo5.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(DtoUserUpdate item)
+        public async Task<IActionResult> Update([FromBody] DtoUserUpdate item)
         {
             await _userService.Update(item);
             return NoContent();
