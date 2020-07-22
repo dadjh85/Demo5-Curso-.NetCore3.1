@@ -45,22 +45,26 @@ namespace Repository.UserRepository
             return null;
         }
 
-        public async Task UpdateAsync(User item)
+        public async Task<int?> UpdateAsync(User item)
         {
             if (item != null)
             {
                 _context.User.Update(item);
-                await _context.SaveChangesAsync();
+                return await _context.SaveChangesAsync();
             }
+
+            return null;
         }
 
-        public async Task Delete(User item)
+        public async Task<int?> Delete(User item)
         {
             if (item != null)
             {
                 _context.User.Remove(item);
-                await _context.SaveChangesAsync();
+                return await _context.SaveChangesAsync();
             }
+
+            return null;
         }
 
         #endregion

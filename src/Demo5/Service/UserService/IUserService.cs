@@ -10,10 +10,10 @@ namespace Service.UserService
 
         Task<List<DtoUserGet>> GetList();
 
-        Task<int> Add(DtoUserAdd item);
+        Task<int?> Add(DtoUserAdd item);
 
-        Task Update(DtoUserUpdate item);
+        Task<int?> Update(DtoUserUpdate item);
 
-        Task Delete(int id);
+        Task<int?> Delete(int id);
     }
 }

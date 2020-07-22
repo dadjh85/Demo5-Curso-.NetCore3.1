@@ -41,28 +41,29 @@ namespace Service.UserService
                                         .ToListAsync();
         }
 
-        public async Task<int> Add(DtoUserAdd item)
+        public async Task<int?> Add(DtoUserAdd item)
         {
             User userToAdd = _mapperConfig.Map<User>(item);
 
             User itemAdded = await _userRepository.AddAsync(userToAdd);
 
-            return itemAdded.Id;
+            return itemAdded?.Id;
         }
 
-        public async Task Update(DtoUserUpdate item)
+        public async Task<int?> Update(DtoUserUpdate item)
         {
             User itemFound = await _userRepository.FindAsync(item.Id);
             _mapperConfig.Map(item, itemFound);
 
-            await _userRepository.UpdateAsync(itemFound);
+            return await _userRepository.UpdateAsync(itemFound);
         }
 
-        public async Task Delete(int id)
+        public async Task<int?> Delete(int id)
         {
             User user = await _userRepository.FindAsync(id);
 
-            await _userRepository.Delete(user);
+            return await _userRepository.Delete(user);
+
         }
     }
 }

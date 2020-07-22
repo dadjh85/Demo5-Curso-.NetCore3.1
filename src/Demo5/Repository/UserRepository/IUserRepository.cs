@@ -15,8 +15,8 @@ namespace Repository.UserRepository
 
         Task<User> AddAsync(User item);
 
-        Task UpdateAsync(User item);
+        Task<int?> UpdateAsync(User item);
 
-        Task Delete(User item);
+        Task<int?> Delete(User item);
     }
 }
