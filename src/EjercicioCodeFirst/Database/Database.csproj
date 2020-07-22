@@ -1,16 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200721163658_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200721163658_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200721163836_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200721163836_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200722103545_test-migration.cs" />
-    <Compile Remove="Migrations\20200722103545_test-migration.Designer.cs" />
+    <Compile Remove="MigracionesDemo\20200722121759_test.cs" />
+    <Compile Remove="MigracionesDemo\20200722121759_test.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,8 +20,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.6" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.6" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
   </ItemGroup>
 
 </Project>

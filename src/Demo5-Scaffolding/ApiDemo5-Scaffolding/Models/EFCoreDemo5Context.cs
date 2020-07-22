@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Database.Models
+namespace ApiDemo5_Scaffolding.Models
 {
     public partial class EFCoreDemo5Context : DbContext
     {

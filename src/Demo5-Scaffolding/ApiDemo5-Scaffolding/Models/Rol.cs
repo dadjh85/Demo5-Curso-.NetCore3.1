@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Database.Models
+namespace ApiDemo5_Scaffolding.Models
 {
     public partial class Rol
     {
