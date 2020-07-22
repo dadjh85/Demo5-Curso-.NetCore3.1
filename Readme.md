@@ -6,10 +6,9 @@
 	* Code First
 	* Database First con Scaffolding (Ingeniería inversa)
 	* Configuración de Scrutor
-	* Configuración de automapper 
-	* Querys EF Core
+	* Configuración de automapper
 * CRUD con patrón Repository
-
+* Buenas prácticas y mejoras de rendimiento con EF Core
 
 
 
