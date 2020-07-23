@@ -9,6 +9,7 @@
 	* Configuración de automapper
 * CRUD con patrón Repository
 * Buenas prácticas y mejoras de rendimiento con EF Core
+* Test unitarios y Tests de integración
 
 
 
