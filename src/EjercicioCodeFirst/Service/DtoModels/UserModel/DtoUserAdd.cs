@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Database.Model
+namespace Service.DtoModels.UserModel
 {
-    public class User
+    public class DtoUserAdd
     {
-        public int Id { get; set; }
 
         [MaxLength(50), Required]
         public string UserName { get; set; }
         public int YearsOld { get; set; }
 
-        [MaxLength(50), Required]
+        [MaxLength(50), Required, EmailAddress]
         public string Email { get; set; }
 
         [MaxLength(200), Required]
@@ -21,19 +20,7 @@ namespace Database.Model
 
         public bool Active { get; set; }
 
-        #region Properties Relations
-
         public int IdRol { get; set; }
-
-        #endregion
-
-        #region Navigations
-
-        public Rol RolNavigation { get; set; }
-
-        public Client ClientNavigation { get; set; }
-
-        #endregion
 
     }
 }

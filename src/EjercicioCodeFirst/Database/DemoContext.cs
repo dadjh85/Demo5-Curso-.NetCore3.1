@@ -1,6 +1,7 @@
 ﻿using Database.Configuration;
 using Database.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Database
 {
@@ -13,10 +14,17 @@ namespace Database
         public DbSet<Category> Category { get; set; }
         public DbSet<Book> Book { get; set; }
         public DbSet<BookCategory> BookCategory { get; set; }
+        public DbSet<Client> Client { get; set; }
 
         #endregion
 
         protected string ConnectionString { get; set; }
+
+        public static readonly ILoggerFactory EFCoreLoggerFactory = LoggerFactory.Create(builder =>
+        {
+            builder.AddFilter((category, level) => category == DbLoggerCategory.Database.Command.Name && level == LogLevel.Information);
+            builder.AddDebug();
+        });
 
         protected DemoContext(string connectionString)
         {
@@ -33,6 +41,8 @@ namespace Database
             {
                 optionsBuilder.UseSqlServer(ConnectionString);
             }
+
+            optionsBuilder.UseLoggerFactory(EFCoreLoggerFactory);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -41,7 +51,8 @@ namespace Database
                         .ApplyConfiguration(new RolConfiguration())
                         .ApplyConfiguration(new BookConfiguration())
                         .ApplyConfiguration(new CategoryConfiguration())
-                        .ApplyConfiguration(new BookCategoryConfiguration());
+                        .ApplyConfiguration(new BookCategoryConfiguration())
+                        .ApplyConfiguration(new ClientConfiguration());
         }
     }
 }
