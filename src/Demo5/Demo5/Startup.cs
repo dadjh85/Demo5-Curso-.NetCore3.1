@@ -32,6 +32,8 @@ namespace Demo5
             services.AddAutoMapper(typeof(UserMapperConfig).GetTypeInfo().Assembly);
             services.AddScrutor();
             services.AddControllers();
+            services.AddHealthCheck(Configuration);
+            services.AddConfigurationHealthCheckUI(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -47,10 +49,7 @@ namespace Demo5
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndPointWithHealthCheck();
         }
     }
 }
