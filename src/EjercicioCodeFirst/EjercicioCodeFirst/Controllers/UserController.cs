@@ -20,6 +20,7 @@ namespace EjercicioCodeFirst.Controllers
         }
 
         [HttpGet("{id}")]
+        [ResponseCache(CacheProfileName = "DefaultCache")]
         public async Task<IActionResult> Get(int id)
         {
            DtoUserGet result = await _userService.Get(id);
@@ -34,7 +35,7 @@ namespace EjercicioCodeFirst.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(DtoUserAdd item)
+        public async Task<IActionResult> Add([FromBody]DtoUserAdd item)
         {
             int? id = await _userService.AddAsync(item);
 
@@ -42,7 +43,7 @@ namespace EjercicioCodeFirst.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(DtoUserUpdate item)
+        public async Task<IActionResult> Update([FromBody]DtoUserUpdate item)
         {
             await _userService.UpdateAsync(item);
             return NoContent();

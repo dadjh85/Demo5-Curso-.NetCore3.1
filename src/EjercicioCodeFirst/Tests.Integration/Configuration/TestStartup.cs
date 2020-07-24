@@ -1,23 +1,21 @@
+﻿using Database;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Text;
+using Microsoft.Extensions.Configuration;
+using Service.DtoModels.UserModel;
 using System.Reflection;
 using AutoMapper;
-using Database;
 using EjercicioCodeFirst.Infrastructure;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Service.DtoModels.UserModel;
 
-namespace EjercicioCodeFirst
+namespace Tests.Integration.Configuration
 {
-    public class Startup
+    public class TestStartup
     {
-        public Startup(IConfiguration configuration)
+        public TestStartup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
@@ -28,25 +26,17 @@ namespace EjercicioCodeFirst
         {
             services.AddScrutor();
             services.AddDbContext<DemoContext>(c => c.UseSqlServer(Configuration.GetConnectionString("Default")));
-            services.AddControllersWithProfileCache(Configuration);
+            services.AddControllers();
             services.AddAutoMapper(typeof(UserAutoMapperConfig).GetTypeInfo().Assembly);
-            services.AddResponseCaching();
+            services.AddHttpContextAccessor();
+            services.AddMvcCore().AddApplicationPart(Assembly.Load(new AssemblyName(nameof(EjercicioCodeFirst))));
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseResponseCaching();
 
             app.UseEndpoints(endpoints =>
             {
