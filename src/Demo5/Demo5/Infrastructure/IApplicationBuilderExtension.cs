@@ -22,7 +22,7 @@ namespace Demo5.Infrastructure
                     setup.AddCustomStylesheet("Infrastructure/CustomStylesheet/dotnet.css");
                 }).WithDisplayName("healt checks services");
                 
-                //endpoints.MapControllers();
+                endpoints.MapControllers();
             });
 
             return app;

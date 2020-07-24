@@ -1,4 +1,5 @@
 ﻿using Demo5.Infrastructure.MapperOptions;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -21,6 +22,17 @@ namespace Demo5.Infrastructure
         {
             services.AddHealthChecksUI()
                     .AddSqlServerStorage(configuration.GetConnectionString("Default"));
+            return services;
+        }
+
+        public static IServiceCollection AddControllersWithDefaultCache(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddControllers(option => option.CacheProfiles.Add("DefaultCache", new CacheProfile()
+            {
+                Duration = configuration.GetValue<int>("Cache:Time"),
+                Location = ResponseCacheLocation.Any
+            }));
+
             return services;
         }
 

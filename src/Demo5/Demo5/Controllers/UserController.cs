@@ -29,6 +29,7 @@ namespace Demo5.Controllers
         }
 
         [HttpGet("{id}")]
+        [ResponseCache(CacheProfileName = "DefaultCache")]
         public async Task<IActionResult> Get(int id)
         {
             DtoUserGet result = await _userService.Get(id);

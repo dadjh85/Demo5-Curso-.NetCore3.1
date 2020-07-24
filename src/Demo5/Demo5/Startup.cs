@@ -31,9 +31,10 @@ namespace Demo5
             services.AddDbContext<DemoContext>(c => c.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddAutoMapper(typeof(UserMapperConfig).GetTypeInfo().Assembly);
             services.AddScrutor();
-            services.AddControllers();
+            services.AddControllersWithDefaultCache(Configuration);
             services.AddHealthCheck(Configuration);
             services.AddConfigurationHealthCheckUI(Configuration);
+            services.AddResponseCaching();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -48,6 +49,8 @@ namespace Demo5
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseResponseCaching();
 
             app.UseEndPointWithHealthCheck();
         }
