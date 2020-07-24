@@ -35,6 +35,7 @@ namespace Demo5
             services.AddHealthCheck(Configuration);
             services.AddConfigurationHealthCheckUI(Configuration);
             services.AddResponseCaching();
+            services.AddSwagger();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -43,6 +44,8 @@ namespace Demo5
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger(env);
 
             app.UseHttpsRedirection();
 

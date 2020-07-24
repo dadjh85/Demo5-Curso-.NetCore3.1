@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
+using System;
+using System.IO;
 using System.Reflection;
 using HealthChecksStatus = Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus;
 
@@ -32,6 +35,23 @@ namespace Demo5.Infrastructure
                 Duration = configuration.GetValue<int>("Cache:Time"),
                 Location = ResponseCacheLocation.Any
             }));
+
+            return services;
+        }
+
+        public static IServiceCollection AddSwagger(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                string xmlFile = "Demo5.XML";
+                string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Curso API-REST .NET Core", Version = "v1" });
+
+                c.CustomSchemaIds(x => x.FullName);
+
+            });
 
             return services;
         }
